@@ -250,6 +250,10 @@ def check_source(sources, i):
 
 
 if __name__ == '__main__':
+    # TODO make separate threads for each source that sleep different amount of times
+    # Also, updates Sources.csv to have the frequency at which sources are checked
+    # When setting up the threads, run each batch update once, then schedule them to update at different times.
+
     sources = pd.read_csv('Sources.csv')
     while(True):
         start = datetime.now()
