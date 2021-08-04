@@ -1,8 +1,17 @@
+# DB Login Credentials
+mydbcredentials.txt
+# Selenium stuff file paths
+webdriverpath.txt
+geckodriver.log
+
+# IDE / TextEditor things
+.idea
+.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
 # C extensions
 *.so
 
