@@ -1,3 +1,5 @@
+# Do not push the data
+*.csv
 # DB Login Credentials
 mydbcredentials.txt
 # Selenium stuff file paths
