@@ -1,11 +1,7 @@
 There are some files that need to exist in this directory for the project to work that were not included on git for
 security reasons.
 
-For database credentials, there needs to be a file in this directory called mydbcredentials.txt that has two lines.
-The first line is the user name and the second line is the password.
-
-Properly use selenium, there needs to be a file called webdriverpath.txt with one line that is the absolute filepath of
-the firefox geckodriver.
+For selenium to work, there needs to be the firefox geckodriver
 
 config.txt:
 This file contain file paths on each line.
