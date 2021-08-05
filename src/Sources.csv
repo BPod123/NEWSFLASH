@@ -1,17 +1,43 @@
-NAME,RSS_URL
-FOX Business Economy,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244061&q=site:
-FOX Business Markets,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244063&q=site:
-CNN Top Stories,http://rss.cnn.com/rss/cnn_topstories.rss
-CNN World,http://rss.cnn.com/rss/cnn_world.rss
-CNN U.S.,http://rss.cnn.com/rss/cnn_us.rss
-CNN Business (CNNMoney.com),http://rss.cnn.com/rss/money_latest.rss
-CNN Politics,http://rss.cnn.com/rss/cnn_allpolitics.rss
-CNN Technology,http://rss.cnn.com/rss/cnn_tech.rss
-CNN 10,http://rss.cnn.com/services/podcasting/cnn10/rss.xml
-CNN Most Recent,http://rss.cnn.com/rss/cnn_latest.rss
-CNN Underscored,http://rss.cnn.com/cnn-underscored.rss
-FOX Latest Headlines (all sections),http://feeds.foxnews.com/foxnews/latest
-FOX National,http://feeds.foxnews.com/foxnews/national
-FOX World,http://feeds.foxnews.com/foxnews/world
-FOX Politics,http://feeds.foxnews.com/foxnews/politics
-FOX SciTech,http://feeds.foxnews.com/foxnews/scitech
+NAME,RSS_URL,PUBLISH_FREQUENCY
+FOX Business Economy,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244061&q=site:,18000
+FOX Business Markets,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244063&q=site:,600
+CNN Top Stories,http://rss.cnn.com/rss/cnn_topstories.rss,2880
+CNN World,http://rss.cnn.com/rss/cnn_world.rss,3600
+CNN U.S.,http://rss.cnn.com/rss/cnn_us.rss,7200
+CNN Politics,http://rss.cnn.com/rss/cnn_allpolitics.rss,3600
+CNN Technology,http://rss.cnn.com/rss/cnn_tech.rss,3600
+CNN 10,http://rss.cnn.com/services/podcasting/cnn10/rss.xml,3600
+CNN Most Recent,http://rss.cnn.com/rss/cnn_latest.rss,3600
+FOX Latest Headlines (all sections),http://feeds.foxnews.com/foxnews/latest,1800
+FOX National,http://feeds.foxnews.com/foxnews/national,3600
+FOX World,http://feeds.foxnews.com/foxnews/world,3600
+FOX Politics,http://feeds.foxnews.com/foxnews/politics,3600
+Ino,https://www.ino.com/blog/feed/,403200
+CNBC Business,https://www.cnbc.com/id/10001147/device/rss/rss.html,86400
+CNBC Earnings,https://www.cnbc.com/id/15839135/device/rss/rss.html,46523
+CNBC Economy,https://www.cnbc.com/id/20910258/device/rss/rss.html,86400
+CNBC Finance,https://www.cnbc.com/id/10000664/device/rss/rss.html,20160
+CNBC Politics,https://www.cnbc.com/id/10000113/device/rss/rss.html,20160
+CNBC Real Estate,https://www.cnbc.com/id/10000115/device/rss/rss.html,50400
+CNBC Wealth,https://www.cnbc.com/id/10001054/device/rss/rss.html,60480
+CNBC Small Business,https://www.cnbc.com/id/44877279/device/rss/rss.html,302400
+CNBC Investing,https://www.cnbc.com/id/15839069/device/rss/rss.html,86400
+CNBC Personal Finance,https://www.cnbc.com/id/21324812/device/rss/rss.html,43200
+CNBC Market Insider,https://www.cnbc.com/id/20409666/device/rss/rss.html?x=1,43200
+CNBC Mad Money,https://www.cnbc.com/id/15838459/device/rss/rss.html,60480
+CNBC World News,https://www.cnbc.com/id/100727362/device/rss/rss.html,3600
+Wall Street Journal Business,https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml,600
+ABC Top Stories,http://feeds.abcnews.com/abcnews/topstories,3456
+ABC International News,http://feeds.abcnews.com/abcnews/internationalheadlines,3456
+ABC U.S. News,https://abcnews.go.com/abcnews/usheadlines,6646
+Ben Shapiro Show,https://feeds.megaphone.fm/WWO8086402096,86400
+New York Times,https://www.nytimes.com/services/xml/rss/nyt/HomePage.xml,12342
+Huffingtong Post,https://www.huffpost.com/section/front-page/feed?x=1,3323
+USA Today,http://rssfeeds.usatoday.com/UsatodaycomNation-TopStories,4320
+Politico,http://www.politico.com/rss/politicopicks.xml,12342
+NPR,http://www.npr.org/rss/rss.php?id=1001,4547
+Breitbart,http://feeds.feedburner.com/breitbart,3927
+New York Post,https://nypost.com/feed/,2880
+CBS,https://www.cbsnews.com/feeds/rss/main.rss,2880
+The Onion (Fake News),http://www.theonion.com/feeds/rss,20160
+Babylon Bee (Fake News),http://babylonbee.com/feed,86400

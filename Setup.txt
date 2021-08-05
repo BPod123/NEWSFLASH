@@ -6,3 +6,11 @@ The first line is the user name and the second line is the password.
 
 Properly use selenium, there needs to be a file called webdriverpath.txt with one line that is the absolute filepath of
 the firefox geckodriver.
+
+config.txt:
+This file contain file paths on each line.
+Line 1 will have the webdriver file path
+Line 2 will have the output directory file path
+Line 3 will have the sources file path
+Line 4 will have the path of the update log file
+Line 5 will have the path of the error log file

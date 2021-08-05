@@ -1,5 +1,10 @@
+# Log Files
+update_log.csv
+error_log.csv
 # Do not push the data
 output/*
+# Config file
+config.txt
 # DB Login Credentials
 mydbcredentials.txt
 # Selenium stuff file paths
