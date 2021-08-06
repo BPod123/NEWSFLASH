@@ -10,17 +10,22 @@ from selenium import webdriver
 from selenium.webdriver import FirefoxOptions as Options
 import threading, queue
 import sys
+
 webdriver_path = [""]
 output_directory = [""]
 sources_path = [""]
 
 update_log = queue.Queue()
 error_log = queue.Queue()
-def dequeue_logs(log_queue, file_path):
+
+
+def dequeue_logs(log_queue, log_func, file_path):
     while True:
         item = log_queue.get()
-        log(item, file_path)
+        log_func(item, file_path)
         log_queue.task_done()
+
+
 def Batch(rss_url):
     feed = feedparser.parse(rss_url)
 
@@ -51,6 +56,7 @@ class EntryInfo(object):
         title = entry['title']
 
         summary = entry['summary'] if 'summary' in entry else ""
+        summary = summary.replace('<div style=""clear: both; padding-top: 0.2em;"">"', "").replace('<div class=\"\"fbz_enclosure\"\" style=\"\"clear: left;\"\">\"', "")
 
         if '<img ' in summary:
             summary = summary[:summary.index('<img ')]
@@ -146,7 +152,7 @@ def insert_batch(source_name, untrimmed_dates: np.ndarray, untrimmed_titles: np.
                                                                    untrimmed_summaries)
 
     if 0 in [len(dates), len(titles), len(summaries)]:
-        return 0, 0
+        return 0, len(overlap)
     years = np.unique(np.vectorize(lambda x: x.year)(dates))
     year_mask = lambda year: (dates >= datetime(year, 1, 1)) & (dates < datetime(year + 1, 1, 1))
     num_new_sources = 0
@@ -203,8 +209,8 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
         return dates, titles, summaries, np.array([]), np.array([])
     # title_indecies = {title: i for title, i in zip(titles, range(len(titles)))}
     title_skip_rows, summary_skip_rows = set(), set()
-    title_index_skip_rows = set()
-    summary_index_skip_rows = set()
+    title_index_skip_rows = {}
+    summary_index_skip_rows = {}
     chunk_size = min(max(len(dates), 25), 50)
 
     for col_name, col, skip_rows, idx_skip_rows in [('TITLE', titles, title_skip_rows, title_index_skip_rows),
@@ -217,18 +223,19 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
             for chunk in reader:
                 for i in range(len(chunk)):
                     item = chunk[col_name][i + chunk.index[0]]
-                    if isinstance(item, float) and np.isnan(item) and "" in col_dict:
+                    if isinstance(item, float) and np.isnan(item) and "" in col_dict and len(col_dict[""]) > 0:
                         skip_rows.update(col_dict[""])
-                        idx_skip_rows.add(chunk.index[i])
-                    elif isinstance(item, str) and item in col_dict:
+                        idx_skip_rows[chunk.index[i]] = col_dict[""]
+                    elif isinstance(item, str) and item in col_dict and len(col_dict[item]) > 0:
                         skip_rows.update(col_dict[item])
-                        idx_skip_rows.add(chunk.index[i])
+                        idx_skip_rows[chunk.index[i]] = col_dict[item]
 
             reader.close()
             del reader, col_dict, range_arr, item
 
     overlap = title_skip_rows.intersection(summary_skip_rows)
-    idx_overlap = title_index_skip_rows.intersection(summary_index_skip_rows)
+    idx_overlap = {x for x in set(title_index_skip_rows.keys()).intersection(set(summary_index_skip_rows.keys())) if
+                   set(title_index_skip_rows[x]) == set(summary_index_skip_rows[x])}
     del title_skip_rows, summary_skip_rows, skip_rows, idx_skip_rows, title_index_skip_rows, summary_index_skip_rows
     if len(overlap) == 0:
         return dates, titles, summaries, np.array([]), np.array([])
@@ -259,7 +266,7 @@ def run_threads(source_names, rss_urls, intervals):
                 futures = [executor.submit(run_thread, source_names[i], rss_urls[i],
                                            intervals[i]) for i in range(len(source_names))]
             except Exception as error:
-                error_log.put("{0} Executor Failed\nError Message: {1}".format(datetime.now(), error))
+                error_log.put("{0} Executor Failed: Error Message: {1}".format(datetime.now(), error))
             finally:
                 # del interval_sources
                 executor.shutdown()
@@ -269,19 +276,27 @@ def run_thread(source_name, rss_url, interval):
     while True:
         try:
             new_sources, num_overlap = check_source(source_name, rss_url)
-            update_log.put("{0}\t{1}\t{2}\t{3}".format(datetime.now(), source_name, new_sources, num_overlap))
+            update_log.put((datetime.now(), source_name, new_sources, num_overlap))
         except Exception as error:
-            error_log.put("{0} FAILED: {1}\nError Message{2}".format(datetime.now(), source_name, error))
+            error_log.put("{0} FAILED: {1} : Error Message: {2}".format(datetime.now(), source_name, error))
             time.sleep(10)
             continue
         time.sleep(interval)
 
-def log(string, file_path):
+
+def log_error(string, file_path):
     sys.stdout = open(file_path, 'a')
+
     print(string)
     sys.stdout.close()
 
-        
+
+def log_update(update_vars, file_path):
+    f = open(file_path, "a")
+    f.write("\t".join([str(x) for x in update_vars]) + "\n"
+            )
+    f.close()
+
 
 def chunk_list(seq, num):
     avg = len(seq) / float(num)
@@ -291,7 +306,6 @@ def chunk_list(seq, num):
         out.append(seq[int(last):int(last + avg)])
         last += avg
     return out
-
 
 
 def main():
@@ -304,18 +318,25 @@ def main():
     sources_path[0] = lines[2]
     update_log_path = lines[3]
     error_log_path = lines[4]
-
-    updater_thread = threading.Thread(target=dequeue_logs, args=(update_log, update_log_path), daemon=True)
+    # if not os.path.isfile(update_log_path):
+    #     f = open(update_log_path, "w")
+    #     f.write("DATE,SOURCE,NEW,OVERLAP\n")
+    #     f.close()
+    # f = open(error_log_path, "w")
+    # f.write("")
+    # f.close()
+    updater_thread = threading.Thread(target=dequeue_logs, args=(update_log, log_update, update_log_path), daemon=True)
     updater_thread.start()
-    error_thread = threading.Thread(target=dequeue_logs, args=(error_log, error_log_path),daemon=True)
+    if not os.path.isfile(update_log_path):
+        update_log.put("DATE,SOURCE,NEW,OVERLAP".split(","))
+    error_thread = threading.Thread(target=dequeue_logs, args=(error_log, log_error, error_log_path), daemon=True)
+    error_thread.start()
     sources = pd.read_csv(sources_path[0])
 
-
     [threading.Thread(target=run_thread,
-                      args=(sources['NAME'][i], sources['RSS_URL'][i], sources['PUBLISH_FREQUENCY'][i])).start() for i in range(len(sources))]
+                      args=(sources['NAME'][i], sources['RSS_URL'][i], sources['PUBLISH_FREQUENCY'][i])).start() for i
+     in range(len(sources))]
 
 
 if __name__ == '__main__':
     main()
-
-
