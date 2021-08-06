@@ -153,6 +153,10 @@ def insert_batch(source_name, untrimmed_dates: np.ndarray, untrimmed_titles: np.
 
     if 0 in [len(dates), len(titles), len(summaries)]:
         return 0, len(overlap)
+    # Sometimes the length of overlap does not equal the length of download_times. In this event, just use the current
+    # time
+    if len(overlap) != len(download_times):
+        download_times = np.array([datetime.now()] * len(overlap))
     years = np.unique(np.vectorize(lambda x: x.year)(dates))
     year_mask = lambda year: (dates >= datetime(year, 1, 1)) & (dates < datetime(year + 1, 1, 1))
     num_new_sources = 0
@@ -212,7 +216,16 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
     title_index_skip_rows = {}
     summary_index_skip_rows = {}
     chunk_size = min(max(len(dates), 25), 50)
-
+    # df = pd.read_csv(get_fname(source_name, None, True), usecols=['INDEX', 'TITLE', 'SUMMARY'],
+    #                      index_col='INDEX')
+    #
+    # range_arr = np.array(range(len(df)))
+    # title_dict = {x: set(range_arr[titles == x]) for x in set(titles)}
+    # title_skip_rows = {i for i in range(len(titles)) if titles[i] in df['TITLE'].values}
+    # summary_dict = {x: set(range_arr[titles == x]) for x in set(titles)}
+    # summary_skip_rows = {i for i in range(len(summaries)) if summaries[i] in df['SUMMARY'].values}
+    # df_titles =
+    #
     for col_name, col, skip_rows, idx_skip_rows in [('TITLE', titles, title_skip_rows, title_index_skip_rows),
                                                     ('SUMMARY', summaries, summary_skip_rows, summary_index_skip_rows)]:
         range_arr = np.array(range(len(col)))
@@ -233,9 +246,10 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
             reader.close()
             del reader, col_dict, range_arr, item
 
-    overlap = title_skip_rows.intersection(summary_skip_rows)
-    idx_overlap = {x for x in set(title_index_skip_rows.keys()).intersection(set(summary_index_skip_rows.keys())) if
-                   set(title_index_skip_rows[x]) == set(summary_index_skip_rows[x])}
+    overlap = title_skip_rows#.intersection(summary_skip_rows)
+    # idx_overlap = {x for x in set(title_index_skip_rows.keys()).intersection(set(summary_index_skip_rows.keys())) if
+    #                set(title_index_skip_rows[x]) == set(summary_index_skip_rows[x])}
+    idx_overlap = set(title_index_skip_rows.keys())
     del title_skip_rows, summary_skip_rows, skip_rows, idx_skip_rows, title_index_skip_rows, summary_index_skip_rows
     if len(overlap) == 0:
         return dates, titles, summaries, np.array([]), np.array([])
