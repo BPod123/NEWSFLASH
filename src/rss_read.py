@@ -56,7 +56,8 @@ class EntryInfo(object):
         title = entry['title']
 
         summary = entry['summary'] if 'summary' in entry else ""
-        summary = summary.replace('<div style=""clear: both; padding-top: 0.2em;"">"', "").replace('<div class=\"\"fbz_enclosure\"\" style=\"\"clear: left;\"\">\"', "")
+        summary = summary.replace('<div style=""clear: both; padding-top: 0.2em;"">"', "").replace(
+            '<div class=\"\"fbz_enclosure\"\" style=\"\"clear: left;\"\">\"', "")
 
         if '<img ' in summary:
             summary = summary[:summary.index('<img ')]
@@ -112,7 +113,8 @@ def parse_datetime(element):
         elif index == 2:
             date -= timedelta(minutes=num)
         else:
-            error_log.put("parse_datetime error: Unknown Date: \"{0}\" Using datetime.now() instead".format(ago))
+            error_log.put((datetime.now(), "Feedspot Source. Exact source unknown.",
+                           "parse_datetime error: Unknown Date: \"{0}\" Using datetime.now() instead".format(ago)))
     elif index_str == "M":
         num = int("".join([x for x in ago if x.isalnum() and not x.isalpha()]))
         if date.month - num > 0:
@@ -131,9 +133,9 @@ def get_fname(source_str, pub_year, most_recent_batch=False):
     :return: The requested file name, either the year file name for a source or the Last Batch file name
     """
     if not most_recent_batch:
-        return os.path.abspath("{0}/{1} {2}.csv".format(output_directory[0], pub_year, source_str))
+        return os.path.abspath("{0}/Saved Output/{1} {2}.csv".format(output_directory[0], pub_year, source_str))
     else:
-        return os.path.abspath("{0}/Last Batch {1}.csv".format(output_directory[0], source_str))
+        return os.path.abspath("{0}/Last Batch/Last Batch {1}.csv".format(output_directory[0], source_str))
 
 
 def insert_batch(source_name, untrimmed_dates: np.ndarray, untrimmed_titles: np.ndarray,
@@ -246,10 +248,10 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
             reader.close()
             del reader, col_dict, range_arr, item
 
-    overlap = title_skip_rows#.intersection(summary_skip_rows)
-    # idx_overlap = {x for x in set(title_index_skip_rows.keys()).intersection(set(summary_index_skip_rows.keys())) if
-    #                set(title_index_skip_rows[x]) == set(summary_index_skip_rows[x])}
-    idx_overlap = set(title_index_skip_rows.keys())
+    overlap = title_skip_rows  # .intersection(summary_skip_rows)
+    idx_overlap = {x for x in set(title_index_skip_rows.keys()).intersection(set(summary_index_skip_rows.keys())) if
+                   set(title_index_skip_rows[x]) == set(summary_index_skip_rows[x])}
+    # idx_overlap = set(title_index_skip_rows.keys())
     del title_skip_rows, summary_skip_rows, skip_rows, idx_skip_rows, title_index_skip_rows, summary_index_skip_rows
     if len(overlap) == 0:
         return dates, titles, summaries, np.array([]), np.array([])
@@ -272,44 +274,25 @@ def check_source(source_name, rss_feed):
     return num_new_sources
 
 
-def run_threads(source_names, rss_urls, intervals):
-    while True:
-        with ThreadPoolExecutor() as executor:
-            try:
-                # futures = [executor.submit(run_threads, interval_sources[interval][0], interval_sources[interval][1]) for interval in interval_sources]
-                futures = [executor.submit(run_thread, source_names[i], rss_urls[i],
-                                           intervals[i]) for i in range(len(source_names))]
-            except Exception as error:
-                error_log.put("{0} Executor Failed: Error Message: {1}".format(datetime.now(), error))
-            finally:
-                # del interval_sources
-                executor.shutdown()
-
-
 def run_thread(source_name, rss_url, interval):
     while True:
         try:
             new_sources, num_overlap = check_source(source_name, rss_url)
             update_log.put((datetime.now(), source_name, new_sources, num_overlap))
         except Exception as error:
-            error_log.put("{0} FAILED: {1} : Error Message: {2}".format(datetime.now(), source_name, error))
+            error_log.put((datetime.now(), source_name,
+                           error))  # "{0} FAILED: {1} : Error Message: {2}".format(datetime.now(), source_name, error))
             time.sleep(10)
             continue
         time.sleep(interval)
 
 
-def log_error(string, file_path):
-    sys.stdout = open(file_path, 'a')
-
-    print(string)
-    sys.stdout.close()
-
-
-def log_update(update_vars, file_path):
+def log_data(variables, file_path):
     f = open(file_path, "a")
-    f.write("\t".join([str(x) for x in update_vars]) + "\n"
+    f.write("\t".join([str(x) for x in variables]) + "\n"
             )
     f.close()
+
 
 
 def chunk_list(seq, num):
@@ -332,19 +315,26 @@ def main():
     sources_path[0] = lines[2]
     update_log_path = lines[3]
     error_log_path = lines[4]
-    # if not os.path.isfile(update_log_path):
-    #     f = open(update_log_path, "w")
-    #     f.write("DATE,SOURCE,NEW,OVERLAP\n")
-    #     f.close()
-    # f = open(error_log_path, "w")
-    # f.write("")
-    # f.close()
-    updater_thread = threading.Thread(target=dequeue_logs, args=(update_log, log_update, update_log_path), daemon=True)
+
+    # Set up saved output folder
+    if not os.path.isdir("{0}/Saved Output".format(output_directory[0])):
+        os.mkdir("{0}/Saved Output".format(output_directory[0]))
+    # Set up last batch folder
+    if not os.path.isdir("{0}/Last Batch".format(output_directory[0])):
+        os.mkdir("{0}/Last Batch".format(output_directory[0]))
+
+    # Setup update log and error log
+    updater_thread = threading.Thread(target=dequeue_logs, args=(update_log, log_data, update_log_path), daemon=True)
     updater_thread.start()
+    error_thread = threading.Thread(target=dequeue_logs, args=(error_log, log_data, error_log_path), daemon=True)
+    error_thread.start()
+
     if not os.path.isfile(update_log_path):
         update_log.put("DATE,SOURCE,NEW,OVERLAP".split(","))
-    error_thread = threading.Thread(target=dequeue_logs, args=(error_log, log_error, error_log_path), daemon=True)
-    error_thread.start()
+    if not os.path.isfile(error_log_path):
+        error_log.put("DATE,SOURCE,MESSAGE".split(","))
+
+    # Start threads for each source
     sources = pd.read_csv(sources_path[0])
 
     [threading.Thread(target=run_thread,

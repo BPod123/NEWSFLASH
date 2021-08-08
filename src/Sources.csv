@@ -26,13 +26,13 @@ CNBC Personal Finance,https://www.cnbc.com/id/21324812/device/rss/rss.html,43200
 CNBC Market Insider,https://www.cnbc.com/id/20409666/device/rss/rss.html?x=1,43200
 CNBC Mad Money,https://www.cnbc.com/id/15838459/device/rss/rss.html,60480
 CNBC World News,https://www.cnbc.com/id/100727362/device/rss/rss.html,3600
-Wall Street Journal Business,https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml,3600
+Wall Street Journal Business,https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml,6600
 ABC Top Stories,http://feeds.abcnews.com/abcnews/topstories,3456
 ABC International News,http://feeds.abcnews.com/abcnews/internationalheadlines,3456
 ABC U.S. News,https://abcnews.go.com/abcnews/usheadlines,6646
 Ben Shapiro Show,https://feeds.megaphone.fm/WWO8086402096,86400
 New York Times,https://www.nytimes.com/services/xml/rss/nyt/HomePage.xml,12342
-Huffingtong Post,https://www.huffpost.com/section/front-page/feed?x=1,3323
+Huffingtong Post,https://www.huffpost.com/section/front-page/feed?x=1,6323
 USA Today,http://rssfeeds.usatoday.com/UsatodaycomNation-TopStories,4320
 Politico,http://www.politico.com/rss/politicopicks.xml,12342
 NPR,http://www.npr.org/rss/rss.php?id=1001,4547
@@ -40,3 +40,7 @@ Breitbart,http://feeds.feedburner.com/breitbart,3927
 New York Post,https://nypost.com/feed/,2440
 The Onion (Fake News),http://www.theonion.com/feeds/rss,20160
 Babylon Bee (Fake News),http://babylonbee.com/feed,86400
+Market Watch Real Time Headlines,http://feeds.marketwatch.com/marketwatch/realtimeheadlines/,36000
+Market Watch Market Pulse,http://feeds.marketwatch.com/marketwatch/marketpulse/,36000
+Market Watch Breaking News Bulletins,http://feeds.marketwatch.com/marketwatch/bulletins,36000
+

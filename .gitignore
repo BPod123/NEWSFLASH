@@ -2,7 +2,7 @@
 update_log.csv
 error_log.csv
 # Do not push the data
-output/*
+output/Saved Output/*
 # Config file
 config.txt
 # DB Login Credentials
