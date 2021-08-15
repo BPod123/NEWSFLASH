@@ -1,17 +1,20 @@
-import logging
 import os
+import queue
+import threading
 import time
 from datetime import timedelta, datetime
-from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+from threading import Lock
+
 import feedparser
 import numpy as np
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver import FirefoxOptions as Options
-import threading, queue
-import sys
+from webdriver_manager.firefox import GeckoDriverManager
 
-webdriver_path = [""]
+file_lock = Lock()
+webdriver_lock = Lock()
+# webdriver_path = [""]
 output_directory = [""]
 sources_path = [""]
 
@@ -81,16 +84,22 @@ def extractFeedspotHeadlines(rss_url):
     :param rss_url: string
     :return: numpy array of Entries
     """
-    ops = Options()
-    ops.add_argument('--headless')
-    driver = webdriver.Firefox(executable_path=webdriver_path[0], options=ops, service_log_path='NUL')
-    driver.get(rss_url)
-    titles = np.array([x.get_attribute('innerHTML') for x in driver.find_elements_by_class_name('ext_link') if
-                       len(x.get_attribute('innerHTML'))])
-    summaries = np.array([x[:x.index(' ..<a rel=')] for x in
-                          [x.get_attribute('innerHTML') for x in driver.find_elements_by_class_name('fs_entry_desc')]])
-    publish_dates = np.array([parse_datetime(x) for x in driver.find_elements_by_class_name('oc-sb')])
-    driver.close()
+    webdriver_lock.acquire()
+    try:
+        ops = Options()
+        ops.add_argument('--headless')
+
+        # driver = webdriver.Firefox(executable_path=webdriver_path[0], options=ops, service_log_path='NUL')
+        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=ops, service_log_path='NUL')
+        driver.get(rss_url)
+        titles = np.array([x.get_attribute('innerHTML') for x in driver.find_elements_by_class_name('ext_link') if
+                           len(x.get_attribute('innerHTML'))])
+        summaries = np.array([x[:x.index(' ..<a rel=')] for x in
+                              [x.get_attribute('innerHTML') for x in driver.find_elements_by_class_name('fs_entry_desc')]])
+        publish_dates = np.array([parse_datetime(x) for x in driver.find_elements_by_class_name('oc-sb')])
+        driver.close()
+    finally:
+        webdriver_lock.release()
     return publish_dates, titles, summaries
 
 
@@ -124,16 +133,34 @@ def parse_datetime(element):
             date = datetime(year=date.year - 1, month=int(12 - abs(date.month - num)), day=date.day)
     return date
 
-
-def get_fname(source_str, pub_year, most_recent_batch=False):
+month_dict = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August',
+              9: 'September', 10: 'October', 11: 'November', 12: 'December'}
+def get_fname(source_str, pub_year=None, pub_month=None, most_recent_batch=False, ignore_month=True):
     """
     :param source_str: Name of source
     :param pub_year: Year designation, if not a Last Batch File
+    :param pub_month: The month of the last batch file (currently ignored)
     :param most_recent_batch: If true, will ignore year and will return file name for Last Batch
+    :param ignore_month: Defaults to True, will make separate files and folders for each month if false
     :return: The requested file name, either the year file name for a source or the Last Batch file name
     """
     if not most_recent_batch:
-        return os.path.abspath("{0}/Saved Output/{1} {2}.csv".format(output_directory[0], pub_year, source_str))
+        year_folder = os.path.abspath('{0}/Saved Output/{1}'.format(output_directory[0], pub_year))
+        month_folder = '{0}/{1}'.format(year_folder, month_dict[pub_month])
+        filename = "{0}/{1}.csv".format(year_folder, source_str) if ignore_month else "{0}/{1}.csv".format(month_folder, source_str)
+        if not (os.path.exists(year_folder) and os.path.isdir(year_folder)):
+            file_lock.acquire()
+            os.mkdir(year_folder)
+            if not ignore_month:
+                os.mkdir(month_folder)
+            file_lock.release()
+        elif not (os.path.exists(month_folder) and os.path.isdir(month_folder)) and not ignore_month:
+            file_lock.acquire()
+            os.mkdir(month_folder)
+            file_lock.release()
+
+        return filename
+    # return os.path.abspath("{0}/Saved Output/{1} {2}.csv".format(output_directory[0], pub_year, source_str))
     else:
         return os.path.abspath("{0}/Last Batch/Last Batch {1}.csv".format(output_directory[0], source_str))
 
@@ -161,22 +188,27 @@ def insert_batch(source_name, untrimmed_dates: np.ndarray, untrimmed_titles: np.
         download_times = np.array([datetime.now()] * len(overlap))
     years = np.unique(np.vectorize(lambda x: x.year)(dates))
     year_mask = lambda year: (dates >= datetime(year, 1, 1)) & (dates < datetime(year + 1, 1, 1))
+
     num_new_sources = 0
     for year in years:
         mask = year_mask(year)
-        batch_dates, batch_titles, batch_summaries = dates[mask], titles[mask], summaries[mask]
-        del mask
 
-        fname = get_fname(source_name, year)
+        year_dates, year_titles, year_summaries = dates[mask], titles[mask], summaries[mask]
+        months = np.unique(np.vectorize(lambda x: x.month)(dates))
+        month_mask = lambda month: (year_dates >= datetime(year, month, 1)) & (year_dates < datetime(year if month != 12 else year + 1, month + 1 if month != 12 else 1, 1))
+        for month in months:
+            mask = month_mask(month)
+            batch_dates, batch_titles, batch_summaries = year_dates[mask], year_titles[mask], year_summaries[mask]
+            fname = get_fname(source_name, year, month)
 
-        df = pd.DataFrame({'DATE': batch_dates, 'TITLE': batch_titles, 'SUMMARY': batch_summaries})
-        if len(df) > 0:
-            num_new_sources += len(df)
-            if not os.path.isfile(fname):
-                df.to_csv(fname, index=False)
-            else:
-                df.to_csv(fname, header=False, index=False, mode='a')
-        del year, df, fname, batch_dates, batch_titles, batch_summaries
+            df = pd.DataFrame({'DATE': batch_dates, 'TITLE': batch_titles, 'SUMMARY': batch_summaries})
+            if len(df) > 0:
+                num_new_sources += len(df)
+                if not os.path.isfile(fname):
+                    df.to_csv(fname, index=False)
+                else:
+                    df.to_csv(fname, header=False, index=False, mode='a')
+        del year, df, fname, batch_dates, batch_titles, batch_summaries, month, year_dates, year_titles, year_summaries
     # Now to write the Last Batch file for the next check
     # if there was any overlap, those overlapping rows need to be in the Last Batch file because there is
     # risk of them being read again on the next read
@@ -195,7 +227,7 @@ def insert_batch(source_name, untrimmed_dates: np.ndarray, untrimmed_titles: np.
                                            'SUMMARY': summaries})
     possible_overlap_batch.index.name = 'INDEX'
     if len(possible_overlap_batch) > 0:
-        possible_overlap_batch.to_csv(get_fname(source_name, None, most_recent_batch=True))
+        possible_overlap_batch.to_csv(get_fname(source_name, most_recent_batch=True))
     return num_new_sources, len(overlap)
 
 
@@ -210,7 +242,7 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
     :param summaries
     :returns trimmed dates, trimmed titles, trimmed summaries, overlap, download_times
     """
-    last_batch_fname = get_fname(source_name, None, True)
+    last_batch_fname = get_fname(source_name, most_recent_batch=True)
     if not os.path.isfile(last_batch_fname):
         return dates, titles, summaries, np.array([]), np.array([])
     # title_indecies = {title: i for title, i in zip(titles, range(len(titles)))}
@@ -218,21 +250,13 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
     title_index_skip_rows = {}
     summary_index_skip_rows = {}
     chunk_size = min(max(len(dates), 25), 50)
-    # df = pd.read_csv(get_fname(source_name, None, True), usecols=['INDEX', 'TITLE', 'SUMMARY'],
-    #                      index_col='INDEX')
-    #
-    # range_arr = np.array(range(len(df)))
-    # title_dict = {x: set(range_arr[titles == x]) for x in set(titles)}
-    # title_skip_rows = {i for i in range(len(titles)) if titles[i] in df['TITLE'].values}
-    # summary_dict = {x: set(range_arr[titles == x]) for x in set(titles)}
-    # summary_skip_rows = {i for i in range(len(summaries)) if summaries[i] in df['SUMMARY'].values}
-    # df_titles =
-    #
+
+
     for col_name, col, skip_rows, idx_skip_rows in [('TITLE', titles, title_skip_rows, title_index_skip_rows),
                                                     ('SUMMARY', summaries, summary_skip_rows, summary_index_skip_rows)]:
         range_arr = np.array(range(len(col)))
         col_dict = {x: set(range_arr[col == x]) for x in set(col)}
-        with pd.read_csv(get_fname(source_name, None, True), chunksize=chunk_size, usecols=['INDEX', col_name],
+        with pd.read_csv(get_fname(source_name, most_recent_batch=True), chunksize=chunk_size, usecols=['INDEX', col_name],
                          index_col='INDEX',
                          low_memory=True) as reader:
             for chunk in reader:
@@ -260,7 +284,7 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
     new_dates, new_titles, new_summaries = np.delete(dates, overlap), np.delete(titles, overlap), np.delete(summaries,
                                                                                                             overlap)
     download_times = []
-    with pd.read_csv(get_fname(source_name, None, True), chunksize=chunk_size, usecols=['INDEX', 'DOWNLOAD_TIME'],
+    with pd.read_csv(get_fname(source_name, most_recent_batch=True), chunksize=chunk_size, usecols=['INDEX', 'DOWNLOAD_TIME'],
                      index_col='INDEX', low_memory=True) as reader:
         for chunk in reader:
             download_times.append(chunk['DOWNLOAD_TIME'][[x in idx_overlap for x in chunk.index]].values)
@@ -310,11 +334,11 @@ def main():
     lines = f.read().split("\n")
     f.close()
 
-    webdriver_path[0] = lines[0]
-    output_directory[0] = lines[1]
-    sources_path[0] = lines[2]
-    update_log_path = lines[3]
-    error_log_path = lines[4]
+    # webdriver_path[0] = lines[0]
+    output_directory[0] = os.path.abspath(lines[0])
+    sources_path[0] = os.path.abspath(lines[1])
+    update_log_path = os.path.abspath(lines[2])
+    error_log_path = os.path.abspath(lines[3])
 
     # Set up saved output folder
     if not os.path.isdir("{0}/Saved Output".format(output_directory[0])):
