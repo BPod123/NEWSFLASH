@@ -5,7 +5,8 @@ For selenium to work, there needs to be the firefox geckodriver
 
 config.txt:
 This file contain relative file paths on each line from rss_read.
-Line 1 will have the output directory file path
-Line 2 will have the sources file path
-Line 3 will have the path of the update log file
-Line 4 will have the path of the error log file
+Line 1  will have the geckodriver file path
+Line 2 will have the output directory file path
+Line 3 will have the sources file path
+Line 4 will have the path of the update log file
+Line 5 will have the path of the error log file

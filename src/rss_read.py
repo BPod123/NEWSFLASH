@@ -9,12 +9,12 @@ import feedparser
 import numpy as np
 import pandas as pd
 from selenium import webdriver
-from selenium.webdriver import FirefoxOptions as Options
-from webdriver_manager.firefox import GeckoDriverManager
+# from selenium.webdriver import FirefoxOptions as Options
+from selenium.webdriver import ChromeOptions as Options
 
 file_lock = Lock()
 webdriver_lock = Lock()
-# webdriver_path = [""]
+webdriver_path = [""]
 output_directory = [""]
 sources_path = [""]
 
@@ -87,11 +87,12 @@ def extractFeedspotHeadlines(rss_url):
     webdriver_lock.acquire()
     try:
         ops = Options()
-        ops.add_argument('--headless')
+        # ops.add_argument('--headless')
 
         # driver = webdriver.Firefox(executable_path=webdriver_path[0], options=ops, service_log_path='NUL')
-        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=ops, service_log_path='NUL')
+        driver = webdriver.Chrome(executable_path=webdriver_path[0], options=ops, service_log_path='NUL')
         driver.get(rss_url)
+        time.sleep(10 * np.random.random() + 5)
         titles = np.array([x.get_attribute('innerHTML') for x in driver.find_elements_by_class_name('ext_link') if
                            len(x.get_attribute('innerHTML'))])
         summaries = np.array([x[:x.index(' ..<a rel=')] for x in
@@ -333,12 +334,12 @@ def main():
     f = open("../config.txt", "r")
     lines = f.read().split("\n")
     f.close()
-
-    # webdriver_path[0] = lines[0]
-    output_directory[0] = os.path.abspath(lines[0])
-    sources_path[0] = os.path.abspath(lines[1])
-    update_log_path = os.path.abspath(lines[2])
-    error_log_path = os.path.abspath(lines[3])
+    lines = [os.path.abspath(x) for x in lines]
+    webdriver_path[0] = lines[0]
+    output_directory[0] = lines[1]
+    sources_path[0] = lines[2]
+    update_log_path = lines[3]
+    error_log_path = lines[4]
 
     # Set up saved output folder
     if not os.path.isdir("{0}/Saved Output".format(output_directory[0])):
