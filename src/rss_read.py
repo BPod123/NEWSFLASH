@@ -334,12 +334,12 @@ def main():
     f = open("../config.txt", "r")
     lines = f.read().split("\n")
     f.close()
-    lines = [os.path.abspath(x) for x in lines]
-    webdriver_path[0] = lines[0]
-    output_directory[0] = lines[1]
-    sources_path[0] = lines[2]
-    update_log_path = lines[3]
-    error_log_path = lines[4]
+    # lines = [os.path.abspath(x) for x in lines]
+    webdriver_path[0] = os.path.abspath(lines[0])
+    output_directory[0] = os.path.abspath(lines[1])
+    sources_path[0] = os.path.abspath(lines[2])
+    update_log_path = os.path.abspath(lines[3])
+    error_log_path = os.path.abspath(lines[4])
 
     # Set up saved output folder
     if not os.path.isdir("{0}/Saved Output".format(output_directory[0])):
