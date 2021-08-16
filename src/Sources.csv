@@ -1,6 +1,6 @@
 NAME,RSS_URL,PUBLISH_FREQUENCY
-FOX Business Economy,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244061&q=site:,18000
-FOX Business Markets,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244063&q=site:,7200
+FOX Business Economy,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244061&q=site:,15000
+FOX Business Markets,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244063&q=site:,3200
 CNN Top Stories,http://rss.cnn.com/rss/cnn_topstories.rss,3600
 CNN World,http://rss.cnn.com/rss/cnn_world.rss,3600
 CNN U.S.,http://rss.cnn.com/rss/cnn_us.rss,7200
