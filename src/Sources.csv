@@ -43,4 +43,28 @@ Babylon Bee (Fake News),http://babylonbee.com/feed,86400
 Market Watch Real Time Headlines,http://feeds.marketwatch.com/marketwatch/realtimeheadlines/,36000
 Market Watch Market Pulse,http://feeds.marketwatch.com/marketwatch/marketpulse/,36000
 Market Watch Breaking News Bulletins,http://feeds.marketwatch.com/marketwatch/bulletins,36000
-
+The Atlantic World,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5232981&q=site:https%3A%2F%2Fwww.theatlantic.com%2Ffeed%2Fall%2F,28800
+The Atlantic Politics,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=4555082&q=site:https%3A%2F%2Fwww.theatlantic.com%2Ffeed%2Fchannel%2Fpolitics%2F,86400
+The Atlantic Business,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261944&q=site:,2592000
+The Atlantic Global,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261947&q=site:,259200
+The Atlantic Technology,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261952&q=site:,172800
+Politico Congress,https://rss.politico.com/congress.xml,172800
+Politico Economy,https://rss.politico.com/economy.xml,432000
+Politico Energy and Environment,http://rss.politico.com/energy.xml,1728000
+Sky News UK,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5243646&q=site:,21600
+Sky News World News,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5243650&q=site:,21600
+Sky News Political News,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5243652&q=site:,43200
+Sky News Business,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5243665&q=site:,43200
+Sky News Technology,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5243663&q=site:,43200
+NBC US,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5245929&q=site:,28800
+NBC World,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5245948&q=site:,28800
+NBC Politics,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5245935&q=site:,28800
+NBC Coronavirus,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5245912&q=site:,28800
+NBC Science,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5245958&q=site:,86400
+New York Times Business,https://rss.nytimes.com/services/xml/rss/nyt/Business.xml,86400
+New York Times Small Business,https://rss.nytimes.com/services/xml/rss/nyt/SmallBusiness.xml,86400
+New York Times Economy,https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml,86400
+NPR National,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5242033&q=site:,43200
+NPR Asia,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5242057&q=site:,86400
+NPR Europe,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5242079&q=site:,86400
+NPR Politics,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5242090&q=site:,43200
