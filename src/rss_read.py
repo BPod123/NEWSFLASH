@@ -9,6 +9,8 @@ import feedparser
 import numpy as np
 import pandas as pd
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+
 # from selenium.webdriver import FirefoxOptions as Options
 from selenium.webdriver import ChromeOptions as Options
 
@@ -84,21 +86,27 @@ def extractFeedspotHeadlines(rss_url):
     :param rss_url: string
     :return: numpy array of Entries
     """
+    publish_dates, titles, summaries = np.array([]), np.array([]), np.array([])
     webdriver_lock.acquire()
     try:
         ops = Options()
-        # ops.add_argument('--headless')
+        # ops.add_argument('--headless') # Going headless (running webdriver in background - not visible on desktop -
+        # causes site not to render for some reason
 
-        # driver = webdriver.Firefox(executable_path=webdriver_path[0], options=ops, service_log_path='NUL')
         driver = webdriver.Chrome(executable_path=webdriver_path[0], options=ops, service_log_path='NUL')
-        driver.get(rss_url)
-        time.sleep(10 * np.random.random() + 5)
-        titles = np.array([x.get_attribute('innerHTML') for x in driver.find_elements_by_class_name('ext_link') if
-                           len(x.get_attribute('innerHTML'))])
-        summaries = np.array([x[:x.index(' ..<a rel=')] for x in
-                              [x.get_attribute('innerHTML') for x in driver.find_elements_by_class_name('fs_entry_desc')]])
-        publish_dates = np.array([parse_datetime(x) for x in driver.find_elements_by_class_name('oc-sb')])
-        driver.close()
+        try:
+            driver.get(rss_url)
+            time.sleep(10 * np.random.random() + 5)
+
+            titles = np.array([x.get_attribute('innerHTML') for x in driver.find_elements(By.CLASS_NAME, 'ext_link') if
+                               len(x.get_attribute('innerHTML'))])
+            summaries = np.array([x[:x.index(' ..<a rel=')] for x in
+                                  [x.get_attribute('innerHTML') for x in driver.find_elements(By.CLASS_NAME, 'fs_entry_desc')]])
+            publish_dates = np.array([parse_datetime(x) for x in driver.find_elements(By.CLASS_NAME, 'oc-sb')])
+        finally:
+            driver.quit()
+    except Exception as error:
+        print(error)
     finally:
         webdriver_lock.release()
     return publish_dates, titles, summaries

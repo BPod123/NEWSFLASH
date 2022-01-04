@@ -1,10 +1,10 @@
 # Log Files
-log/update_log.csv
-log/error_log.csv
+#log/update_log.csv
+#log/error_log.csv
 # Do not push the data
-output/*
-output/Saved Output/*
-webdriver/*
+#output/*
+#output/Saved Output/*
+#webdriver/*
 
 # Selenium stuff file paths
 webdriverpath.txt
