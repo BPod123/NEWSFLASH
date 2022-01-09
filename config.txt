@@ -1,5 +1,5 @@
-..\..\Webdrivers\chromedriver
-..\output
+../../Webdrivers/chromedriver
+../output
 Sources.csv
-..\log\update_log.csv
-..\log\error_log.csv
+../log/update_log.csv
+../log/error_log.csv
