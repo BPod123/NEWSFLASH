@@ -1,0 +1,127 @@
+[1642349031.435][INFO]: Starting ChromeDriver 95.0.4638.78 (4cfe4a3e1a37cb8d4d57324c584f81aafc35a81b-refs/branch-heads/4638@{#1010}) on port 59055
+[1642349031.435][INFO]: Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+[1642349031.665][INFO]: [4b0b5fdd3b979c7fa1ff4a936dd71815] COMMAND InitSession {
+   "capabilities": {
+      "alwaysMatch": {
+         "browserName": "chrome",
+         "goog:chromeOptions": {
+            "args": [  ],
+            "extensions": [  ]
+         },
+         "pageLoadStrategy": "normal"
+      },
+      "firstMatch": [ {
+
+      } ]
+   },
+   "desiredCapabilities": {
+      "browserName": "chrome",
+      "goog:chromeOptions": {
+         "args": [  ],
+         "extensions": [  ]
+      },
+      "pageLoadStrategy": "normal"
+   }
+}
+[1642349031.804][INFO]: Populating Preferences file: {
+   "alternate_error_pages": {
+      "enabled": false
+   },
+   "autofill": {
+      "enabled": false
+   },
+   "browser": {
+      "check_default_browser": false
+   },
+   "distribution": {
+      "import_bookmarks": false,
+      "import_history": false,
+      "import_search_engine": false,
+      "make_chrome_default_for_user": false,
+      "skip_first_run_ui": true
+   },
+   "dns_prefetching": {
+      "enabled": false
+   },
+   "profile": {
+      "content_settings": {
+         "pattern_pairs": {
+            "https://*,*": {
+               "media-stream": {
+                  "audio": "Default",
+                  "video": "Default"
+               }
+            }
+         }
+      },
+      "default_content_setting_values": {
+         "geolocation": 1
+      },
+      "default_content_settings": {
+         "geolocation": 1,
+         "mouselock": 1,
+         "notifications": 1,
+         "popups": 1,
+         "ppapi-broker": 1
+      },
+      "password_manager_enabled": false
+   },
+   "safebrowsing": {
+      "enabled": false
+   },
+   "search": {
+      "suggest_enabled": false
+   },
+   "translate": {
+      "enabled": false
+   }
+}
+[1642349031.805][INFO]: Populating Local State file: {
+   "background_mode": {
+      "enabled": false
+   },
+   "ssl": {
+      "rev_checking": {
+         "enabled": false
+      }
+   }
+}
+[1642349031.805][INFO]: Launching chrome: /usr/bin/chromium-browser --allow-pre-commit-input --disable-background-networking --disable-client-side-phishing-detection --disable-default-apps --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --enable-automation --enable-blink-features=ShadowDOMV0 --enable-logging --log-level=0 --no-first-run --no-service-autorun --password-store=basic --remote-debugging-port=0 --test-type=webdriver --use-mock-keychain --user-data-dir=/tmp/.org.chromium.Chromium.Kf3eMR data:,
+[1642349034.687][INFO]: resolved localhost to ["::1","127.0.0.1"]
+[1642349035.883][INFO]: [4b0b5fdd3b979c7fa1ff4a936dd71815] RESPONSE InitSession {
+   "capabilities": {
+      "acceptInsecureCerts": false,
+      "browserName": "chrome",
+      "browserVersion": "95.0.4638.78",
+      "chrome": {
+         "chromedriverVersion": "95.0.4638.78 (4cfe4a3e1a37cb8d4d57324c584f81aafc35a81b-refs/branch-heads/4638@{#1010})",
+         "userDataDir": "/tmp/.org.chromium.Chromium.Kf3eMR"
+      },
+      "goog:chromeOptions": {
+         "debuggerAddress": "localhost:44827"
+      },
+      "networkConnectionEnabled": false,
+      "pageLoadStrategy": "normal",
+      "platformName": "linux",
+      "proxy": {
+
+      },
+      "setWindowRect": true,
+      "strictFileInteractability": false,
+      "timeouts": {
+         "implicit": 0,
+         "pageLoad": 300000,
+         "script": 30000
+      },
+      "unhandledPromptBehavior": "dismiss and notify",
+      "webauthn:extension:credBlob": true,
+      "webauthn:extension:largeBlob": true,
+      "webauthn:virtualAuthenticators": true
+   },
+   "sessionId": "4b0b5fdd3b979c7fa1ff4a936dd71815"
+}
+[1642349035.929][INFO]: [4b0b5fdd3b979c7fa1ff4a936dd71815] COMMAND Navigate {
+   "url": "https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244061&q=site:"
+}
+[1642349036.983][INFO]: Waiting for pending navigations...
+[1642349036.991][INFO]: Done waiting for pending navigations. Status: ok
