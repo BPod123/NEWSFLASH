@@ -11709,3 +11709,5 @@ Current browser version is 96.0.4664.110 with binary path C:\Program Files (x86)
 2022-03-21 08:40:18.630212	CNN World	'NoneType' object is not subscriptable
 2022-03-21 08:40:29.011807	CNN World	'NoneType' object is not subscriptable
 2022-03-21 08:40:39.373281	CNN World	'NoneType' object is not subscriptable
+2022-03-26 09:39:01.047699	FOX Politics	[Errno 110] Connection timed out
+2022-03-26 12:38:59.117910	FOX National	[Errno 110] Connection timed out
