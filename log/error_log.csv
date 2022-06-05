@@ -16248,3 +16248,7 @@ Current browser version is 96.0.4664.110 with binary path C:\Program Files (x86)
 2022-04-19 10:30:18.678371	CNN Top Stories	'NoneType' object is not subscriptable
 2022-05-12 14:17:55.809030	New York Times	[Errno 110] Connection timed out
 2022-05-15 05:49:55.965258	ABC International News	[Errno 110] Connection timed out
+2022-05-31 07:22:40.322410	Politico	IncompleteRead(489928 bytes read, 255900 more expected)
+2022-05-31 07:31:03.649013	Politico	IncompleteRead(457162 bytes read, 288666 more expected)
+2022-05-31 12:44:27.867642	NPR	Remote end closed connection without response
+2022-06-02 20:04:04.759516	CNBC World News	Remote end closed connection without response
