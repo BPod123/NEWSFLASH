@@ -16252,3 +16252,383 @@ Current browser version is 96.0.4664.110 with binary path C:\Program Files (x86)
 2022-05-31 07:31:03.649013	Politico	IncompleteRead(457162 bytes read, 288666 more expected)
 2022-05-31 12:44:27.867642	NPR	Remote end closed connection without response
 2022-06-02 20:04:04.759516	CNBC World News	Remote end closed connection without response
+2022-06-05 17:03:52.652908	New York Post	Remote end closed connection without response
+2022-06-06 18:03:01.508795	New York Times	[Errno 110] Connection timed out
+2022-06-08 13:21:30.628845	NPR	[Errno 110] Connection timed out
+2022-06-11 08:38:22.468938	CNN Politics	[Errno 110] Connection timed out
+2022-06-14 20:22:50.298717	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:23:00.674005	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:23:11.050929	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:23:21.473965	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:23:31.851362	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:23:42.221925	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:23:52.601741	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:24:02.986289	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:24:13.408398	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:24:23.820145	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:24:34.191464	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:24:44.576361	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:24:54.952431	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:25:05.328918	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:25:15.703395	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:25:26.073913	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:25:36.453964	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:25:46.824516	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:25:57.208893	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:26:07.610242	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:26:18.016107	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:26:28.411741	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:26:38.786603	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:26:49.175455	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:26:59.582728	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:27:09.963256	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:27:20.332676	CNN World	'NoneType' object is not subscriptable
+2022-06-14 20:27:30.758760	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:27:42.696280	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:27:53.115355	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:28:03.500259	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:28:13.872340	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:28:24.255153	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:28:34.653844	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:28:45.028668	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:28:55.450150	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:29:05.852039	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:29:16.237309	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:29:26.623498	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:29:37.046933	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:29:47.455257	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:29:57.830242	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:30:08.213211	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:30:18.596302	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:30:28.985376	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:30:39.364682	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:30:49.744212	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:31:00.557355	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:31:10.930723	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:31:21.299082	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:31:31.674071	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:31:42.040803	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:31:52.415353	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:32:02.759744	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:32:13.140711	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:32:23.550049	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:32:33.925413	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:32:44.344379	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:32:54.719404	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:33:05.102448	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:33:15.490722	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:33:25.855915	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:33:36.231347	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:33:46.639549	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:33:57.009181	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:34:07.415322	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:34:17.794846	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:34:28.176302	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:34:38.561625	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:34:48.952769	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:34:59.337274	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:35:09.710846	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:35:20.082636	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:35:30.450159	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:35:40.815638	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:35:51.205037	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:36:01.572146	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:36:11.983577	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:36:22.411800	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:36:32.805541	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:36:43.171540	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:36:53.539245	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:37:03.915428	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:37:14.288712	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:37:24.697527	CNN World	'NoneType' object is not subscriptable
+2022-06-14 23:39:16.129393	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:39:26.492532	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:39:36.864087	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:39:47.228364	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:39:57.605030	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:40:07.968819	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:40:18.332789	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:40:28.731828	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:40:39.129578	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:40:49.492503	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:40:59.859667	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:41:10.235373	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:41:20.595329	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:41:30.980274	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:41:41.346668	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:41:51.772274	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:42:02.209108	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:42:12.565428	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:42:22.929745	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:42:33.299010	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:42:43.673176	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:42:54.057619	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:43:04.424657	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:43:14.793733	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:43:25.179661	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:43:35.544410	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:43:45.927740	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:43:56.330003	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:44:06.727005	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:44:17.093030	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:44:27.467846	CNN Politics	'NoneType' object is not subscriptable
+2022-06-14 23:44:37.834610	CNN Politics	'NoneType' object is not subscriptable
+2022-06-15 08:24:16.407381	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:24:27.103146	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:24:37.752707	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:24:48.409435	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:24:59.044501	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:25:09.676248	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:25:20.304895	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:25:30.970880	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:25:41.657731	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:25:52.308902	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:26:02.983116	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:26:13.626870	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:26:24.320950	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:26:34.947497	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:26:45.584245	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:26:56.214499	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:27:06.869846	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:27:17.498799	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:27:28.178595	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:27:38.809380	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:27:49.501945	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:28:00.140133	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:28:10.776267	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 08:28:21.413599	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:28:37.582387	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:28:48.228691	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:28:58.854007	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:29:09.514552	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:29:20.139664	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:29:30.767224	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:29:41.430098	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:29:52.070012	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:30:02.735681	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:30:13.364246	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:30:24.032575	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:30:34.704543	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:30:45.600342	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:31:05.270189	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:31:17.012405	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:31:28.216488	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:31:38.841087	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:31:49.480318	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-15 15:31:59.578234	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:32:33.184625	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:32:43.818911	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:32:54.485002	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:33:05.173315	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:33:15.803398	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:33:26.440470	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:33:37.067047	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:33:47.722998	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:33:58.425080	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:34:09.062145	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:34:19.692066	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:34:30.331606	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:34:41.002005	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:34:51.632585	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:35:02.321933	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:35:13.005409	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:35:23.643877	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:35:34.303223	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:35:44.955550	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:35:55.628411	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:36:06.322163	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:36:17.021741	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:36:27.691715	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:36:38.319844	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:36:48.984093	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:36:59.638414	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:37:10.306379	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:37:20.939169	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:37:31.613445	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:37:42.284317	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:37:52.952724	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:38:03.602824	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 18:38:14.269831	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:38:25.670582	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:38:36.341819	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:38:46.973910	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:38:57.623829	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:39:08.297892	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:39:18.973082	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:39:29.645610	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:39:40.281167	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:39:50.984889	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:40:01.611290	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:40:12.243057	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:40:22.872213	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:40:33.559477	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:40:44.247033	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:40:54.912546	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:41:05.544801	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:41:16.176466	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:41:26.835775	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:41:37.502979	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:41:48.156301	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:41:58.813842	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:42:09.489618	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 19:42:20.177651	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:42:33.322311	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:42:44.020444	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:42:54.747109	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:43:05.414486	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:43:16.096021	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:43:26.746419	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:43:37.391311	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:43:48.077586	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:43:58.711982	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:44:09.391492	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:44:20.034253	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:44:30.671496	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:44:41.350599	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:44:52.010778	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:45:02.664407	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-16 22:45:13.305088	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:38:04.567274	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:38:14.936661	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:38:25.346739	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:38:35.771335	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:38:46.188038	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:38:56.564442	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:39:06.948941	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:39:17.323231	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:39:27.699580	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:39:38.074917	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:39:48.462378	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:39:58.843494	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:40:09.224912	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:40:19.639802	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:40:29.985973	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:40:40.355781	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:40:50.727519	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:41:01.138186	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:41:11.546449	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:41:21.948449	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:41:32.331408	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:41:42.704359	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:41:53.090613	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:42:03.497652	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:42:13.912981	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:42:24.332519	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:42:34.696661	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:42:45.096102	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:42:55.511061	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:43:05.922860	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:43:16.314978	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:43:26.717773	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:43:37.095403	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:43:47.487084	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:43:57.870698	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:44:08.278543	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:44:18.698971	CNN World	'NoneType' object is not subscriptable
+2022-06-17 00:45:25.498571	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:45:36.303623	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:45:46.948664	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:45:57.619317	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:46:08.297018	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:46:18.945090	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:46:29.616988	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:46:40.321617	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:46:51.043380	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:47:01.703936	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:47:12.346688	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:47:22.990729	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:47:33.652074	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:47:44.298656	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:47:54.959125	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:48:05.596557	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:48:16.249959	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:48:26.898378	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:48:37.578764	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:48:48.243343	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:48:58.902929	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:49:09.558200	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:49:20.239629	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:49:30.925536	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:49:41.569799	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:49:52.211604	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:50:02.889956	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:50:13.570477	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:50:24.249422	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:50:34.944375	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 00:50:45.590166	CNN Top Stories	'NoneType' object is not subscriptable
+2022-06-17 06:21:55.909728	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:22:06.255285	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:22:16.585875	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:22:26.937649	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:22:37.289904	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:22:47.636524	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:22:58.014374	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:23:08.371617	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:23:18.716936	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:23:29.064278	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:23:39.405442	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:23:49.757608	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:24:00.119437	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:24:10.531898	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:24:20.877237	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:24:31.254350	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:24:41.666503	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:24:52.074865	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:25:02.435438	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:25:12.788089	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:25:23.134385	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:25:33.506921	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:25:43.852231	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:25:54.240961	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:26:04.623431	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:26:14.966808	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:26:25.344966	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:26:35.731980	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:26:46.090880	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:26:56.480625	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:27:06.824763	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:27:17.185981	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:27:27.562136	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:27:37.916851	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:27:48.263521	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:27:58.606687	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:28:08.961617	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:28:19.324885	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:28:29.714763	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:28:40.065585	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:28:50.408411	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:29:00.754934	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:29:11.092512	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:29:21.449121	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:29:31.827677	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:29:42.175168	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:29:52.517675	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:30:02.850969	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:30:13.214860	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:30:23.586806	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:30:33.929957	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:30:44.276532	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:30:54.623687	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:31:05.004168	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:31:15.346302	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:31:25.683592	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:31:36.049572	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:31:46.364157	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:31:56.719862	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 06:32:07.074138	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:32:17.916775	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:32:28.265917	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:32:38.603687	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:32:48.987100	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:32:59.345303	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:33:09.720588	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:33:20.071219	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:33:30.410943	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:33:40.762050	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:33:51.105517	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:34:01.441150	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:34:11.800309	CNN U.S.	'NoneType' object is not subscriptable
+2022-06-17 08:44:33.034945	CNN World	'NoneType' object is not subscriptable
+2022-06-17 08:44:43.390163	CNN World	'NoneType' object is not subscriptable
+2022-06-17 08:44:53.806689	CNN World	'NoneType' object is not subscriptable
+2022-06-17 08:45:04.220140	CNN World	'NoneType' object is not subscriptable
