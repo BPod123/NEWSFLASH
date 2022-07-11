@@ -16800,3 +16800,6 @@ Current browser version is 96.0.4664.110 with binary path C:\Program Files (x86)
 2022-06-24 18:56:04.607715	New York Post	'NoneType' object is not subscriptable
 2022-06-24 18:56:14.863311	New York Post	'NoneType' object is not subscriptable
 2022-06-24 18:56:25.142940	New York Post	'NoneType' object is not subscriptable
+2022-07-05 04:52:43.145174	New York Post	Remote end closed connection without response
+2022-07-07 10:22:57.047549	CNN Technology	[Errno 110] Connection timed out
+2022-07-08 09:05:33.207406	Breitbart	[Errno 110] Connection timed out
