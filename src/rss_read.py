@@ -93,7 +93,7 @@ def extractFeedspotHeadlines(rss_url):
         # ops.add_argument('--headless') # Going headless (running webdriver in background - not visible on desktop -
         # causes site not to render for some reason
 
-        driver = webdriver.Chrome(executable_path=webdriver_path[0], options=ops, service_log_path='NUL')
+        driver = webdriver.Chrome(executable_path=webdriver_path[0], options=ops)
         try:
             driver.get(rss_url)
             time.sleep(10 * np.random.random() + 5)
