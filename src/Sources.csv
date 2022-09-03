@@ -20,7 +20,7 @@ CNBC Finance,https://www.cnbc.com/id/10000664/device/rss/rss.html,20160
 CNBC Politics,https://www.cnbc.com/id/10000113/device/rss/rss.html,20160
 CNBC Real Estate,https://www.cnbc.com/id/10000115/device/rss/rss.html,50400
 CNBC Wealth,https://www.cnbc.com/id/10001054/device/rss/rss.html,60480
-CNBC Small Business,https://www.cnbc.com/id/44877279/device/rss/rss.html,302400
+CNBC Small Business,https://www.cnbc.com/id/44877279/device/rss/rss.html,86400
 CNBC Investing,https://www.cnbc.com/id/15839069/device/rss/rss.html,86400
 CNBC Personal Finance,https://www.cnbc.com/id/21324812/device/rss/rss.html,43200
 CNBC Market Insider,https://www.cnbc.com/id/20409666/device/rss/rss.html?x=1,43200
@@ -45,12 +45,12 @@ Market Watch Market Pulse,http://feeds.marketwatch.com/marketwatch/marketpulse/,
 Market Watch Breaking News Bulletins,http://feeds.marketwatch.com/marketwatch/bulletins,36000
 The Atlantic World,https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5232981&q=site:https%3A%2F%2Fwww.theatlantic.com%2Ffeed%2Fall%2F,28800
 The Atlantic Politics,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=4555082&q=site:https%3A%2F%2Fwww.theatlantic.com%2Ffeed%2Fchannel%2Fpolitics%2F,86400
-The Atlantic Business,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261944&q=site:,2592000
-The Atlantic Global,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261947&q=site:,259200
-The Atlantic Technology,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261952&q=site:,172800
-Politico Congress,https://rss.politico.com/congress.xml,172800
-Politico Economy,https://rss.politico.com/economy.xml,432000
-Politico Energy and Environment,http://rss.politico.com/energy.xml,1728000
+The Atlantic Business,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261944&q=site:,86400
+The Atlantic Global,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261947&q=site:,86400
+The Atlantic Technology,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261952&q=site:,86400
+Politico Congress,https://rss.politico.com/congress.xml,86400
+Politico Economy,https://rss.politico.com/economy.xml,86400
+Politico Energy and Environment,http://rss.politico.com/energy.xml,86400
 Sky News UK,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5243646&q=site:,21600
 Sky News World News,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5243650&q=site:,21600
 Sky News Political News,https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5243652&q=site:,43200
