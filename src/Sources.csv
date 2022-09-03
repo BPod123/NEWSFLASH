@@ -12,7 +12,7 @@ FOX Latest Headlines (all sections),http://feeds.foxnews.com/foxnews/latest,1800
 FOX National,http://feeds.foxnews.com/foxnews/national,3600
 FOX World,http://feeds.foxnews.com/foxnews/world,3600
 FOX Politics,http://feeds.foxnews.com/foxnews/politics,3600
-Ino,https://www.ino.com/blog/feed/,403200
+Ino,https://www.ino.com/blog/feed/,86400
 CNBC Business,https://www.cnbc.com/id/10001147/device/rss/rss.html,86400
 CNBC Earnings,https://www.cnbc.com/id/15839135/device/rss/rss.html,46523
 CNBC Economy,https://www.cnbc.com/id/20910258/device/rss/rss.html,86400
