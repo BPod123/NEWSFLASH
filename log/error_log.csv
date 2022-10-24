@@ -7408,3 +7408,5 @@ DATE	SOURCE	MESSAGE
 2022-09-06 11:37:01.296068	Wall Street Journal Business	'NoneType' object is not subscriptable
 2022-10-09 03:30:57.986139	NPR	[Errno 104] Connection reset by peer
 2022-10-12 22:26:02.378501	Huffingtong Post	[Errno 104] Connection reset by peer
+2022-10-18 12:24:07.059841	ABC Top Stories	[Errno 104] Connection reset by peer
+2022-10-18 12:24:24.317578	NPR	[Errno 104] Connection reset by peer
