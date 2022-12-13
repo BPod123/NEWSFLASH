@@ -8,15 +8,13 @@ from threading import Lock
 import feedparser
 import numpy as np
 import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-# from selenium.webdriver import FirefoxOptions as Options
-from selenium.webdriver import ChromeOptions as Options
+from scrapy.selector import Selector
+from scrapy.http import HtmlResponse
+import requests
+import re
 
 file_lock = Lock()
 webdriver_lock = Lock()
-webdriver_path = [""]
 output_directory = [""]
 sources_path = [""]
 
@@ -89,40 +87,40 @@ def extractFeedspotHeadlines(rss_url):
     publish_dates, titles, summaries = np.array([]), np.array([]), np.array([])
     webdriver_lock.acquire()
     try:
-        ops = Options()
-        # ops.add_argument('--headless') # Going headless (running webdriver in background - not visible on desktop -
-        # causes site not to render for some reason
-
-        driver = webdriver.Chrome(executable_path=webdriver_path[0], options=ops)
-        try:
-            driver.get(rss_url)
-            time.sleep(10 * np.random.random() + 5)
-
-            titles = np.array([x.get_attribute('innerHTML') for x in driver.find_elements(By.CLASS_NAME, 'ext_link') if
-                               len(x.get_attribute('innerHTML'))])
-            summaries = np.array([x[:x.index(' ..<a rel=')] for x in
-                                  [x.get_attribute('innerHTML') for x in driver.find_elements(By.CLASS_NAME, 'fs_entry_desc')]])
-            publish_dates = np.array([parse_datetime(x) for x in driver.find_elements(By.CLASS_NAME, 'oc-sb')])
-        finally:
-            driver.quit()
+        resp = requests.get(rss_url)
+        response = HtmlResponse(url=rss_url, body=resp.content)
+        sel = Selector(response)
+        entry_items = sel.css(".entry__item")
+        publish_dates = []
+        titles = []
+        summaries = []
+        for entry in entry_items:
+            title_link = entry.css(".entry__item_title").css("a")[0].get()
+            title = re.findall(r"(?<=>).*(?=</a>)", title_link)[0]
+            pub_time_info = parse_datetime(entry.css(".entry__item_time").xpath("text()").get().strip())
+            excerpt = entry.css(".entry__item_excerpt").xpath("text()").get().strip()
+            if excerpt.endswith(".."):
+                excerpt = excerpt[:-2]
+            titles.append(title)
+            summaries.append(excerpt)
+            publish_dates.append(pub_time_info)
     except Exception as error:
         print(error)
     finally:
         webdriver_lock.release()
-    return publish_dates, titles, summaries
+    return np.array(publish_dates), np.array(titles), np.array(summaries)
 
 
-def parse_datetime(element):
-    ago = [x for x in [x for x in element.get_attribute("innerHTML").split("-") if len(x) > 0
-                       and "ago" in x][0].split(" ") if len(x) > 0 and "\n" not in x and
-           "\t" not in x][0]
+def parse_datetime(string):
+    if 'ago' in string:
+        string = string[:string.index('ago')].strip()
 
     date = datetime.now()
     date -= timedelta(seconds=date.second, microseconds=date.microsecond)
-    index_str = "".join([x for x in ago if x.isalpha()])
+    index_str = "".join([x for x in string if x.isalpha()])
     if index_str in 'd h m'.split(" "):
         index = 'd h m'.split(" ").index(index_str)
-        num = int("".join([x for x in ago if x.isalnum() and not x.isalpha()]))
+        num = int("".join([x for x in string if x.isalnum() and not x.isalpha()]))
         if index == 0:
             date -= timedelta(days=num, hours=date.hour, minutes=date.minute)
         elif index == 1:
@@ -132,18 +130,22 @@ def parse_datetime(element):
             date -= timedelta(minutes=num)
         else:
             error_log.put((datetime.now(), "Feedspot Source. Exact source unknown.",
-                           "parse_datetime error: Unknown Date: \"{0}\" Using datetime.now() instead".format(ago)))
+                           "parse_datetime error: Unknown Date: \"{0}\" Using datetime.now() instead".format(string)))
     elif index_str == "M":
-        num = int("".join([x for x in ago if x.isalnum() and not x.isalpha()]))
+        num = int("".join([x for x in string if x.isalnum() and not x.isalpha()]))
         if date.month - num > 0:
             date = datetime(year=date.year, month=date.month - 1, day=date.day)
         else:
-
             date = datetime(year=date.year - 1, month=int(12 - abs(date.month - num)), day=date.day)
+    elif index_str == 'w':
+        date -= timedelta(days=7 * int(string[:string.index(index_str)]))
     return date
+
 
 month_dict = {1: 'January', 2: 'February', 3: 'March', 4: 'April', 5: 'May', 6: 'June', 7: 'July', 8: 'August',
               9: 'September', 10: 'October', 11: 'November', 12: 'December'}
+
+
 def get_fname(source_str, pub_year=None, pub_month=None, most_recent_batch=False, ignore_month=True):
     """
     :param source_str: Name of source
@@ -156,7 +158,8 @@ def get_fname(source_str, pub_year=None, pub_month=None, most_recent_batch=False
     if not most_recent_batch:
         year_folder = os.path.abspath('{0}/Saved Output/{1}'.format(output_directory[0], pub_year))
         month_folder = '{0}/{1}'.format(year_folder, month_dict[pub_month])
-        filename = "{0}/{1}.csv".format(year_folder, source_str) if ignore_month else "{0}/{1}.csv".format(month_folder, source_str)
+        filename = "{0}/{1}.csv".format(year_folder, source_str) if ignore_month else "{0}/{1}.csv".format(month_folder,
+                                                                                                           source_str)
         if not (os.path.exists(year_folder) and os.path.isdir(year_folder)):
             file_lock.acquire()
             os.mkdir(year_folder)
@@ -204,7 +207,8 @@ def insert_batch(source_name, untrimmed_dates: np.ndarray, untrimmed_titles: np.
 
         year_dates, year_titles, year_summaries = dates[mask], titles[mask], summaries[mask]
         months = np.unique(np.vectorize(lambda x: x.month)(dates))
-        month_mask = lambda month: (year_dates >= datetime(year, month, 1)) & (year_dates < datetime(year if month != 12 else year + 1, month + 1 if month != 12 else 1, 1))
+        month_mask = lambda month: (year_dates >= datetime(year, month, 1)) & (
+                    year_dates < datetime(year if month != 12 else year + 1, month + 1 if month != 12 else 1, 1))
         for month in months:
             mask = month_mask(month)
             batch_dates, batch_titles, batch_summaries = year_dates[mask], year_titles[mask], year_summaries[mask]
@@ -260,12 +264,12 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
     summary_index_skip_rows = {}
     chunk_size = min(max(len(dates), 25), 50)
 
-
     for col_name, col, skip_rows, idx_skip_rows in [('TITLE', titles, title_skip_rows, title_index_skip_rows),
                                                     ('SUMMARY', summaries, summary_skip_rows, summary_index_skip_rows)]:
         range_arr = np.array(range(len(col)))
         col_dict = {x: set(range_arr[col == x]) for x in set(col)}
-        with pd.read_csv(get_fname(source_name, most_recent_batch=True), chunksize=chunk_size, usecols=['INDEX', col_name],
+        with pd.read_csv(get_fname(source_name, most_recent_batch=True), chunksize=chunk_size,
+                         usecols=['INDEX', col_name],
                          index_col='INDEX',
                          low_memory=True) as reader:
             for chunk in reader:
@@ -293,7 +297,8 @@ def trim_batch(source_name, dates: np.ndarray, titles: np.ndarray, summaries: np
     new_dates, new_titles, new_summaries = np.delete(dates, overlap), np.delete(titles, overlap), np.delete(summaries,
                                                                                                             overlap)
     download_times = []
-    with pd.read_csv(get_fname(source_name, most_recent_batch=True), chunksize=chunk_size, usecols=['INDEX', 'DOWNLOAD_TIME'],
+    with pd.read_csv(get_fname(source_name, most_recent_batch=True), chunksize=chunk_size,
+                     usecols=['INDEX', 'DOWNLOAD_TIME'],
                      index_col='INDEX', low_memory=True) as reader:
         for chunk in reader:
             download_times.append(chunk['DOWNLOAD_TIME'][[x in idx_overlap for x in chunk.index]].values)
@@ -327,7 +332,6 @@ def log_data(variables, file_path):
     f.close()
 
 
-
 def chunk_list(seq, num):
     avg = len(seq) / float(num)
     out = []
@@ -342,12 +346,10 @@ def main():
     f = open("../config.txt", "r")
     lines = f.read().split("\n")
     f.close()
-    # lines = [os.path.abspath(x) for x in lines]
-    webdriver_path[0] = os.path.abspath(lines[0])
-    output_directory[0] = os.path.abspath(lines[1])
-    sources_path[0] = os.path.abspath(lines[2])
-    update_log_path = os.path.abspath(lines[3])
-    error_log_path = os.path.abspath(lines[4])
+    output_directory[0] = os.path.abspath(lines[0])
+    sources_path[0] = os.path.abspath(lines[1])
+    update_log_path = os.path.abspath(lines[2])
+    error_log_path = os.path.abspath(lines[3])
 
     # Set up saved output folder
     if not os.path.isdir("{0}/Saved Output".format(output_directory[0])):
