@@ -12,6 +12,9 @@ def run_test(rss_url):
     publish_dates = []
     titles = []
     summaries = []
+    for i, string in enumerate(list(map(str,map(Selector.get, entry_items))), start=1):
+        print(f"\n\n\n\n{i})")
+        print(string)
     for entry in entry_items:
         title_link = entry.css(".entry__item_title").css("a")[0].get()
         title = re.findall(r"(?<=>).*(?=</a>)", title_link)[0]
