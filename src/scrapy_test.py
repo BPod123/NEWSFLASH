@@ -31,8 +31,8 @@ def run_test(rss_url):
         publish_dates.append(pub_time_info)
     return np.array(publish_dates), np.array(titles), np.array(summaries)
 def start_test():
-    results = run_test('https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244063&q=site:')
+    results = run_test("https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261952&q=site:")
     print(f"Results\n{results}")
 if __name__ == '__main__':
-    results = run_test('https://www.feedspot.com/infiniterss.php?_src=feed_title&followfeedid=5244063&q=site:')
+    results = run_test("https://www.feedspot.com/infiniterss.php?_src=followbtn&followfeedid=5261952&q=site:")
     print(f"Results\n{results}")
