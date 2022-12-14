@@ -2,6 +2,7 @@ import os
 import queue
 import threading
 import time
+from time import sleep
 from datetime import timedelta, datetime
 from threading import Lock
 
@@ -12,9 +13,9 @@ from scrapy.selector import Selector
 from scrapy.http import HtmlResponse
 import requests
 import re
+from random import randint
 
 file_lock = Lock()
-webdriver_lock = Lock()
 output_directory = [""]
 sources_path = [""]
 
@@ -85,8 +86,9 @@ def extractFeedspotHeadlines(rss_url):
     :return: numpy array of Entries
     """
     publish_dates, titles, summaries = np.array([]), np.array([]), np.array([])
-    webdriver_lock.acquire()
     try:
+        for i in randint(1, 3):
+            sleep(randint(0, 30))
         resp = requests.get(rss_url)
         response = HtmlResponse(url=rss_url, body=resp.content)
         sel = Selector(response)
@@ -106,8 +108,7 @@ def extractFeedspotHeadlines(rss_url):
             publish_dates.append(pub_time_info)
     except Exception as error:
         print(error)
-    finally:
-        webdriver_lock.release()
+    print(f"Viewed {len(titles)} from {rss_url}")
     return np.array(publish_dates), np.array(titles), np.array(summaries)
 
 
