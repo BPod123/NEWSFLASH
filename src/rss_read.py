@@ -122,7 +122,6 @@ def extractFeedspotHeadlines(rss_url):
     finally:
         feedspot_lock.release()
     publish_dates, titles, summaries = np.array(publish_dates), np.array(titles), np.array(summaries)
-    print(f"Viewed {len(titles)} from {rss_url}")
     return publish_dates, titles, summaries
 
 
