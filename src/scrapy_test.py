@@ -1,7 +1,6 @@
 from rss_read import *
 def run_test(rss_url):
     publish_dates, titles, summaries = np.array([]), np.array([]), np.array([])
-    webdriver_lock.acquire()
     resp = requests.get(rss_url)
     response = HtmlResponse(url=rss_url, body=resp.content)
     sel = Selector(response)
