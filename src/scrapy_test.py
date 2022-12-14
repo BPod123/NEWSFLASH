@@ -1,9 +1,13 @@
 from rss_read import *
 def run_test(rss_url):
     publish_dates, titles, summaries = np.array([]), np.array([]), np.array([])
+    print("Making request")
     resp = requests.get(rss_url)
+    print("Request received\nMaking HTMLResponse")
     response = HtmlResponse(url=rss_url, body=resp.content)
+    print("HTMLResponse made")
     sel = Selector(response)
+    print("Selector made")
     entry_items = sel.css(".entry__item")
     publish_dates = []
     titles = []
