@@ -16,6 +16,7 @@ import re
 from random import randint
 
 file_lock = Lock()
+feedspot_lock = Lock()
 output_directory = [""]
 sources_path = [""]
 
@@ -87,10 +88,20 @@ def extractFeedspotHeadlines(rss_url):
     """
     publish_dates, titles, summaries = np.array([]), np.array([]), np.array([])
     try:
-        for i in randint(1, 3):
-            sleep(randint(0, 30))
+        feedspot_lock.acquire()
         resp = requests.get(rss_url)
+        attempt = 0
+        while resp.status_code != 200 and attempt < 5:
+            sleep(180)
+            resp = requests.get(rss_url)
+            attempt += 1
+        attempt = 0
         response = HtmlResponse(url=rss_url, body=resp.content)
+        while response.status != 200 and attempt < 5:
+            sleep(120)
+            response = HtmlResponse(url=rss_url, body=resp.content)
+            attempt += 1
+
         sel = Selector(response)
         entry_items = sel.css(".entry__item")
         publish_dates = []
@@ -108,8 +119,11 @@ def extractFeedspotHeadlines(rss_url):
             publish_dates.append(pub_time_info)
     except Exception as error:
         print(error)
+    finally:
+        feedspot_lock.release()
+    publish_dates, titles, summaries = np.array(publish_dates), np.array(titles), np.array(summaries)
     print(f"Viewed {len(titles)} from {rss_url}")
-    return np.array(publish_dates), np.array(titles), np.array(summaries)
+    return publish_dates, titles, summaries
 
 
 def parse_datetime(string):
